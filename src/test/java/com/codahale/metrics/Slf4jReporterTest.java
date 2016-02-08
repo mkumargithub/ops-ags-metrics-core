@@ -72,10 +72,11 @@ public class Slf4jReporterTest {
         when(snapshot.getStdDev()).thenReturn(5.0);
         when(snapshot.getMedian()).thenReturn(6.0);
         when(snapshot.get75thPercentile()).thenReturn(7.0);
-        when(snapshot.get95thPercentile()).thenReturn(8.0);
-        when(snapshot.get98thPercentile()).thenReturn(9.0);
-        when(snapshot.get99thPercentile()).thenReturn(10.0);
-        when(snapshot.get999thPercentile()).thenReturn(11.0);
+        when(snapshot.get90thPercentile()).thenReturn(8.0);
+        when(snapshot.get95thPercentile()).thenReturn(9.0);
+        when(snapshot.get98thPercentile()).thenReturn(10.0);
+        when(snapshot.get99thPercentile()).thenReturn(11.0);
+        when(snapshot.get999thPercentile()).thenReturn(12.0);
 
         when(histogram.getSnapshot()).thenReturn(snapshot);
         when(logger.isErrorEnabled(marker)).thenReturn(true);
@@ -87,7 +88,7 @@ public class Slf4jReporterTest {
                 this.<Timer>map());
 
         verify(logger).error(marker,
-                "type=HISTOGRAM, name={}, count={}, min={}, max={}, mean={}, stddev={}, median={}, p75={}, p95={}, p98={}, p99={}, p999={}",
+                "type=HISTOGRAM, name={}, count={}, min={}, max={}, mean={}, stddev={}, median={}, p75={}, p90={}, p95={}, p98={}, p99={}, p999={}",
                 "test.histogram",
                 1L,
                 4L,
@@ -99,7 +100,8 @@ public class Slf4jReporterTest {
                 8.0,
                 9.0,
                 10.0,
-                11.0);
+                11.0,
+                12.0);
     }
 
     @Test
@@ -146,11 +148,11 @@ public class Slf4jReporterTest {
         when(snapshot.getStdDev()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(400));
         when(snapshot.getMedian()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(500));
         when(snapshot.get75thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(600));
-        when(snapshot.get95thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(700));
-        when(snapshot.get98thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(800));
-        when(snapshot.get99thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(900));
-        when(snapshot.get999thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS
-                .toNanos(1000));
+        when(snapshot.get90thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(700));
+        when(snapshot.get95thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(800));
+        when(snapshot.get98thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(900));
+        when(snapshot.get99thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(1000));
+        when(snapshot.get999thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(1100));
 
         when(timer.getSnapshot()).thenReturn(snapshot);
 
@@ -163,7 +165,7 @@ public class Slf4jReporterTest {
                 map("test.another.timer", timer));
 
         verify(logger).error(marker,
-                "type=TIMER, name={}, count={}, min={}, max={}, mean={}, stddev={}, median={}, p75={}, p95={}, p98={}, p99={}, p999={}, mean_rate={}, m1={}, m5={}, m15={}, rate_unit={}, duration_unit={}",
+                "type=TIMER, name={}, count={}, min={}, max={}, mean={}, stddev={}, median={}, p75={}, p90={}, p95={}, p98={}, p99={}, p999={}, mean_rate={}, m1={}, m5={}, m15={}, rate_unit={}, duration_unit={}",
                 "test.another.timer",
                 1L,
                 300.0,
@@ -176,6 +178,7 @@ public class Slf4jReporterTest {
                 800.0,
                 900.0,
                 1000.0,
+                1100.0,
                 2.0,
                 3.0,
                 4.0,
@@ -223,10 +226,11 @@ public class Slf4jReporterTest {
         when(snapshot.getStdDev()).thenReturn(5.0);
         when(snapshot.getMedian()).thenReturn(6.0);
         when(snapshot.get75thPercentile()).thenReturn(7.0);
-        when(snapshot.get95thPercentile()).thenReturn(8.0);
-        when(snapshot.get98thPercentile()).thenReturn(9.0);
-        when(snapshot.get99thPercentile()).thenReturn(10.0);
-        when(snapshot.get999thPercentile()).thenReturn(11.0);
+        when(snapshot.get90thPercentile()).thenReturn(8.0);
+        when(snapshot.get95thPercentile()).thenReturn(9.0);
+        when(snapshot.get98thPercentile()).thenReturn(10.0);
+        when(snapshot.get99thPercentile()).thenReturn(11.0);
+        when(snapshot.get999thPercentile()).thenReturn(12.0);
 
         when(histogram.getSnapshot()).thenReturn(snapshot);
         when(logger.isInfoEnabled(marker)).thenReturn(true);
@@ -238,7 +242,7 @@ public class Slf4jReporterTest {
                 this.<Timer>map());
 
         verify(logger).info(marker,
-                "type=HISTOGRAM, name={}, count={}, min={}, max={}, mean={}, stddev={}, median={}, p75={}, p95={}, p98={}, p99={}, p999={}",
+                "type=HISTOGRAM, name={}, count={}, min={}, max={}, mean={}, stddev={}, median={}, p75={}, p90={}, p95={}, p98={}, p99={}, p999={}",
                 "prefix.test.histogram",
                 1L,
                 4L,
@@ -250,7 +254,8 @@ public class Slf4jReporterTest {
                 8.0,
                 9.0,
                 10.0,
-                11.0);
+                11.0,
+                12.0);
     }
 
     @Test
@@ -297,11 +302,11 @@ public class Slf4jReporterTest {
         when(snapshot.getStdDev()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(400));
         when(snapshot.getMedian()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(500));
         when(snapshot.get75thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(600));
-        when(snapshot.get95thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(700));
-        when(snapshot.get98thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(800));
-        when(snapshot.get99thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(900));
-        when(snapshot.get999thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS
-                .toNanos(1000));
+        when(snapshot.get90thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(700));
+        when(snapshot.get95thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(800));
+        when(snapshot.get98thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(900));
+        when(snapshot.get99thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(1000));
+        when(snapshot.get999thPercentile()).thenReturn((double) TimeUnit.MILLISECONDS.toNanos(1100));
 
         when(timer.getSnapshot()).thenReturn(snapshot);
         when(logger.isInfoEnabled(marker)).thenReturn(true);
@@ -313,7 +318,7 @@ public class Slf4jReporterTest {
                 map("test.another.timer", timer));
 
         verify(logger).info(marker,
-                "type=TIMER, name={}, count={}, min={}, max={}, mean={}, stddev={}, median={}, p75={}, p95={}, p98={}, p99={}, p999={}, mean_rate={}, m1={}, m5={}, m15={}, rate_unit={}, duration_unit={}",
+                "type=TIMER, name={}, count={}, min={}, max={}, mean={}, stddev={}, median={}, p75={}, p90={}, p95={}, p98={}, p99={}, p999={}, mean_rate={}, m1={}, m5={}, m15={}, rate_unit={}, duration_unit={}",
                 "prefix.test.another.timer",
                 1L,
                 300.0,
@@ -326,6 +331,7 @@ public class Slf4jReporterTest {
                 800.0,
                 900.0,
                 1000.0,
+                1100.0,
                 2.0,
                 3.0,
                 4.0,

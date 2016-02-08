@@ -209,7 +209,7 @@ public class Slf4jReporter extends ScheduledReporter {
         final Snapshot snapshot = timer.getSnapshot();
         loggerProxy.log(marker,
                 "type=TIMER, name={}, count={}, min={}, max={}, mean={}, stddev={}, median={}, " +
-                        "p75={}, p95={}, p98={}, p99={}, p999={}, mean_rate={}, m1={}, m5={}, " +
+                        "p75={}, p90={}, p95={}, p98={}, p99={}, p999={}, mean_rate={}, m1={}, m5={}, " +
                         "m15={}, rate_unit={}, duration_unit={}",
                 prefix(name),
                 timer.getCount(),
@@ -219,6 +219,7 @@ public class Slf4jReporter extends ScheduledReporter {
                 convertDuration(snapshot.getStdDev()),
                 convertDuration(snapshot.getMedian()),
                 convertDuration(snapshot.get75thPercentile()),
+                convertDuration(snapshot.get90thPercentile()),
                 convertDuration(snapshot.get95thPercentile()),
                 convertDuration(snapshot.get98thPercentile()),
                 convertDuration(snapshot.get99thPercentile()),
@@ -247,7 +248,7 @@ public class Slf4jReporter extends ScheduledReporter {
         final Snapshot snapshot = histogram.getSnapshot();
         loggerProxy.log(marker,
                 "type=HISTOGRAM, name={}, count={}, min={}, max={}, mean={}, stddev={}, " +
-                        "median={}, p75={}, p95={}, p98={}, p99={}, p999={}",
+                        "median={}, p75={}, p90={}, p95={}, p98={}, p99={}, p999={}",
                 prefix(name),
                 histogram.getCount(),
                 snapshot.getMin(),
@@ -256,6 +257,7 @@ public class Slf4jReporter extends ScheduledReporter {
                 snapshot.getStdDev(),
                 snapshot.getMedian(),
                 snapshot.get75thPercentile(),
+                snapshot.get90thPercentile(),
                 snapshot.get95thPercentile(),
                 snapshot.get98thPercentile(),
                 snapshot.get99thPercentile(),
