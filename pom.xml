@@ -43,6 +43,7 @@
             <url>http://nexus.omnifone.com:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
+
     <!--<groupId>com.codahale.metrics</groupId>
     <artifactId>metrics-core</artifactId>
     <version>3.1.2-OMNIFONE</version>
