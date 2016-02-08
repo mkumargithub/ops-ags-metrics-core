@@ -88,7 +88,7 @@
         </dependency>
     </dependencies>
 
-    <profiles>
+  <!--  <profiles>
         <profile>
             <id>doclint-java8-disable</id>
             <activation>
@@ -96,8 +96,8 @@
             </activation>
             <build>
                 <plugins>
-                    <!-- java 8 doclint html verification is excluded to suppress strict HTML 4.0 compliance errors
-                         like "error: self-closing element not allowed <p/>"   -->
+                    &lt;!&ndash; java 8 doclint html verification is excluded to suppress strict HTML 4.0 compliance errors
+                         like "error: self-closing element not allowed <p/>"   &ndash;&gt;
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
@@ -169,9 +169,9 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
+    </profiles>-->
 
-    <build>
+<!--    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -292,5 +292,5 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 </project>
