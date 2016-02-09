@@ -53,15 +53,14 @@ public abstract class Snapshot {
      * @return the value at the 90th percentile
      * added by mkumar
      */
-    public double get90thPercentile() { return getValue(0.90); }
+    public double get90thPercentile() { return getValue(0.9); }
 
     /**
      * Returns the value at the 95th percentile in the distribution.
      *
      * @return the value at the 95th percentile
      */
-    public double get95thPercentile() {
-        return getValue(0.95);
+    public double get95thPercentile() { return getValue(0.95);
     }
 
     /**
