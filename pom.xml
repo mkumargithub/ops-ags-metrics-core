@@ -18,6 +18,14 @@
         components in your production environment.
     </description>
 
+<dependencies>
+    <dependency>
+        <groupId>io.dropwizard.metrics</groupId>
+        <artifactId>metrics-jvm</artifactId>
+        <version>3.1.2-OMNIFONE</version>
+    </dependency>
+</dependencies>
+
     <build>
         <plugins>
             <plugin>

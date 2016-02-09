@@ -144,7 +144,7 @@ public class ExponentiallyDecayingReservoirTest {
             reservoir.update(178);
             clock.addMillis(valuesIntervalMillis);
         }
-        
+
         // expect that quantiles should be more about mode 2 after 10 minutes
         assertThat(reservoir.getSnapshot().get95thPercentile())
                 .isEqualTo(178);
